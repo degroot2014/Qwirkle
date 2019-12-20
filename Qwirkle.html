@@ -1,0 +1,132 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="Styles/bootstrap.min.css" type="text/css">
+
+    <script src="Script/Utilities.js"></script>
+    <script src="Script/Piece.js"></script>
+    <script src="Script/Board.js"></script>
+    <script src="Script/Player.js"></script>
+    <script src="Script/Qwirkle.js"></script>
+    <script src="Script/Graphics.js"></script>
+    <script src="Script/Main.js"></script>
+  </head>
+  <style>
+    #Diamond { width: 70px; height: 70px; background : url(Assets/TileSprites.png) -420px 0; }
+    #Clover { width: 70px; height: 70px; background : url(Assets/TileSprites.png) -420px -70px; }
+    #Square { width: 70px; height: 70px; background : url(Assets/TileSprites.png) -420px -140px; }
+    #Circle { width: 70px; height: 70px; background : url(Assets/TileSprites.png) -420px -210px; }
+    #FancyStar { width: 70px; height: 70px; background : url(Assets/TileSprites.png) -420px -280px; }
+    #Star { width: 70px; height: 70px; background : url(Assets/TileSprites.png) -420px -350px; }
+
+    #Red { width: 70px; height: 70px; background : url(Assets/TileSprites.png) -490px 0; }
+    #Blue { width: 70px; height: 70px; background : url(Assets/TileSprites.png) -490px -70px; }
+    #Purple { width: 70px; height: 70px; background : url(Assets/TileSprites.png) -490px -140px; }
+    #Yellow { width: 70px; height: 70px; background : url(Assets/TileSprites.png) -490px -210px; }
+    #Green { width: 70px; height: 70px; background : url(Assets/TileSprites.png) -490px -280px; }
+    #Orange { width: 70px; height: 70px; background : url(Assets/TileSprites.png) -490px -350px; }
+  </style>
+  <div>
+    <div class="container float-left" style="width: 250px">
+      <div class="row">
+        Shape to Place:
+      </div>
+      <div class="row no-gutters">
+        <div class="col">
+          <label for="shape1"><img id="Diamond" width="1" height ="1"></label>
+          </br>
+          <input type="radio" id="shape1" name="shapes" value="DIAMOND" />
+        </div>
+        <div class="col">
+          <label for="shape2"><img id="Clover" width="1" height ="1"></label>
+          <br/>
+          <input type="radio" id="shape2" name="shapes" value="CLOVER" />
+        </div>
+        <div class="col">
+          <label for="shape3"><img id="Square" width="1" height ="1"></label>
+          </br>
+          <input type="radio" id="shape3" name="shapes" value="SQUARE" />
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col">
+          <label for="shape4"><img id="Circle" width="1" height ="1"></label>
+          </br>
+          <input type="radio" id="shape4" name="shapes" value="CIRCLE" />
+        </div>
+        <div class="col">
+          <label for="shape5"><img id="FancyStar" width="1" height ="1"></label>
+          </br>
+          <input type="radio" id="shape5" name="shapes" value="FANCY_STAR" />
+        </div>
+        <div class="col">
+          <label for="shape6"><img id="Star" width="1" height ="1"></label>
+          </br>
+          <input type="radio" id="shape6" name="shapes" value="STAR" />
+        </div>
+      </div>
+      <div class="row">
+        Color to Place:
+      </div>
+      <div class="row no-gutters">
+        <div class="col">
+          <label for="color1"><img id="Red" width="1" height ="1"></label>
+          </br>
+          <input type="radio" id="color1" name="colors" value="RED" />
+        </div>
+        <div class="col">
+          <label for="color2"><img id="Blue" width="1" height ="1"></label>
+          </br>
+          <input type="radio" id="color2" name="colors" value="BLUE" />
+        </div>
+        <div class="col">
+          <label for="color3"><img id="Purple" width="1" height ="1"></label>
+          </br>
+          <input type="radio" id="color3" name="colors" value="PURPLE" />
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col">
+          <label for="color4"><img id="Yellow" width="1" height ="1"></label>
+          </br>
+          <input type="radio" id="color4" name="colors" value="YELLOW" />
+        </div>
+        <div class="col">
+          <label for="color5"><img id="Green" width="1" height ="1"></label>
+          </br>
+          <input type="radio" id="color5" name="colors" value="GREEN" />
+        </div>
+        <div class="col">
+          <label for="color6"><img id="Orange" width="1" height ="1"></label>
+          </br>
+          <input type="radio" id="color6" name="colors" value="ORANGE" />
+        </div>
+      </div>
+      <div class="row">
+        <button id="AddTile" type="button" class="btn btn-outline-secondary btn-sm m-1">Add to Hand</button>
+        <button id="RemoveTile" type="button" class="btn btn-outline-secondary btn-sm" style="margin-top: 4px; margin-bottom: 4px;">Remove from Hand</button>
+      </div>
+      <div class="row">
+        <button id="ClearHand" type="button" class="btn btn-outline-secondary btn-sm m-1">Clear Hand</button>
+        <button id="UnselectTile" type="button" class="btn btn-outline-secondary btn-sm m-1">Unselect Tile</button>
+      </div>
+      <div class="row">
+        <button id="CalculateGreediest" type="button" class="btn btn-outline-secondary btn-sm m-1">Calculate Greediest</button>
+        <button id="ResetTurn" type="button" class="btn btn-outline-secondary btn-sm m-1">Reset Turn</button>
+      </div>
+      <div class="row">
+        <button id="EndTurn" type="button" class="btn btn-outline-secondary btn-sm m-1">End Turn</button>
+        <button id="EndGame" type="button" class="btn btn-outline-secondary btn-sm m-1">End Game</button>
+      </div>
+      <div class="row">
+        Player Setup
+      </div>
+      <div class="row">
+        <textarea id="Log" cols="100" rows="7" wrap="off" style="resize: none;"></textarea>
+      </div>
+    </div>
+    <div>
+      <canvas id="hand" width="80" height="455" style="border:5px solid #000000; vertical-align: top;"></canvas>
+      <canvas id="board" width="1100" height="970" style="border:1px solid #000000;"></canvas>
+    </div>
+  </div>
+</html>

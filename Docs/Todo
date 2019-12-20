@@ -1,0 +1,17 @@
+change to gets and sets?
+
+Correct board option
+Enclose game
+  Bag of Tiles
+  Dealing of Tiles
+  Need some negative rewards for not being able to play a piece
+
+AI inputs
+  Board
+  Valid Moves (Piece to play where, end turn)
+    Need to go thru hand and give coordinates where the piece could be played
+    If nothing exists and not first move - Add end turn
+    If first move - Add replace piece
+  Score
+  End state
+    Bag has no tiles and player has no tiles

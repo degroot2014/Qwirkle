@@ -1,0 +1,59 @@
+Need to handle maintaining a hand
+Need to display board
+Need to add tokens to board
+  -Needs to pad board
+Needs to give greediest move
+
+https://github.com/MarcLindenbach/qwirkle
+https://www.youtube.com/watch?v=w-OKdSHRlfA
+
+
+UI Design
+  End Turn (Will end turn and start next)
+  Reset Turn
+
+  Hand Display and Maintenance
+    Remove piece
+    Add piece
+
+  Calculate Greediest Move
+
+  Game Setup
+    Number of players
+
+  Play piece
+
+Combo(Board, Hand, MoveList)
+  if hand <= 0
+    return board
+  Copy board
+  Get valid plays for current state
+  loop thru valid plays
+    loop thru hand
+  return board
+
+Combos(Current Board, Current Hand, [])
+Valid play = (1,0)
+tile = Red Square
+new remaining hand = (yellow Fancy, red fancy, blue star, green star, orange diamond)
+copy board
+play tile to copy
+  Combos(copy, remaining hand,[])
+    valid play = (1,0)
+    tile = yellow fancy
+    new remaining hand = (yellow Fancy, red fancy, blue star, green star, orange diamond)
+    copy board
+    play tile to copy
+    Failed
+    ...
+    add board to []
+reset turn
+...
+tile =  blue star
+new remaining hand = (red square, yellow fancy, red fancy, green star, orange diamond)
+play tile to board
+    Combos(copy, remaining hand,[])
+      copy board
+      ...
+      valid play = (2,1)
+      tile = red square
